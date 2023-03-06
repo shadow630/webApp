@@ -4,7 +4,7 @@ tools {
     maven 'M2_HOME'
 }
     stages {
-        stage {'Build'} {
+        stage ('Build') {
             steps {
                 'mvn clean package'
             }
@@ -16,7 +16,7 @@ tools {
             }
 
         }
-        stage {'Deploy to Tomcat server'}{
+        stage ('Deploy to Tomcat server'){
             steps {
                 deploy adapters: [tomcat9(credentialsId: 'ea592646-15c0-427b-810d-b48273d322c6', path: '', url: 'http://localhost:8080')], contextPath: null, war: '**/*.war'
             }
